@@ -11,20 +11,19 @@ Spring boot will automatically read the file classpath:/application-extra.yml wh
 But the override file override.yml will *not* override the configuration found in application-extra.yml.
 There are 2 solutions.
 
-1. Use the multidocument feature of YAML in override.yml such as.
-
+. Use the multidocument feature of YAML in override.yml such as.
++
     mainkey: mainoverridevalue
     ---
     spring:
       profiles: extra
     extrakey: extraoverridevalue
-
++
 The mainkey item will override the default profile and the extrakey item will override the extra profile.
 
-2. Use two override files like `--spring.config.location=classpath:/override.yml,classpath:/override-extra.yml`.
-Make sure that the override-extra.yml starts like:
-
+. Use two override files like `--spring.config.location=classpath:/override.yml,classpath:/override-extra.yml`.
+  Make sure that the override-extra.yml starts like:
++
     spring:
       profiles: extra
     extrakey: extraoverridevalue
-
