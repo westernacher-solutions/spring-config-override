@@ -1,0 +1,5 @@
+mainkey: mainoverridevalue
+---
+spring:
+  profiles: extra
+extrakey: extraoverridevalue

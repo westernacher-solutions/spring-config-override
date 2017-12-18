@@ -1,0 +1,5 @@
+mainkey: mainvalue
+
+spring:
+  profiles:
+    include: extra
