@@ -1,0 +1,30 @@
+= Playground for spring boot configuration override mechanism
+
+Spring boot applications can be easily configured in a file classpath:/application.yml.
+Such a file ships a set of default configuration items.
+An additional override file can be specified on the command line --spring.config.location=classpath:/override.yml.
+That is easy so far but it becomes more interesting with spring profiles.
+
+A additional spring profile can be activated by adding it to spring.profiles.include or spring.profiles.active in application.yml.
+Let's assume an additional _profile_ extra is active.
+Spring boot will automatically read the file classpath:/application-extra.yml which can contain additional config items.
+But the override file override.yml will *not* override the configuration found in application-extra.yml.
+There are 2 solutions.
+
+1. Use the multidocument feature of YAML in override.yml such as.
+
+    mainkey: mainoverridevalue
+    ---
+    spring:
+      profiles: extra
+    extrakey: extraoverridevalue
+
+The mainkey item will override the default profile and the extrakey item will override the extra profile.
+
+2. Use two override files like -spring.config.location=classpath:/override.yml,classpath:/override-extra.yml.
+Make sure that the override-extra.yml starts like:
+
+    spring:
+      profiles: extra
+    extrakey: extraoverridevalue
+
