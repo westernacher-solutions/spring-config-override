@@ -6,7 +6,7 @@ An additional override file can be specified on the command line `--spring.confi
 That is easy so far but it becomes more interesting with spring profiles.
 
 A additional spring profile can be activated by adding it to spring.profiles.include or spring.profiles.active in application.yml.
-Let's assume an additional _profile_ extra is active.
+Let's assume an additional profile _extra_ is active.
 Spring boot will automatically read the file classpath:/application-extra.yml which can contain additional config items.
 But the override file override.yml will *not* override the configuration found in application-extra.yml.
 There are 2 solutions.
